@@ -7,3 +7,4 @@ export 'form_inputs/phone_number_input.dart';
 export 'form_inputs/file_formz_input.dart';
 export 'form_inputs/generic_formz_input.dart';
 export 'form_inputs/generic_checkbox_input.dart';
+export 'form_inputs/name_input.dart';
