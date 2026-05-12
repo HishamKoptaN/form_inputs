@@ -42,36 +42,25 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
     if (value == null) {
       return DateTimeValidationError.empty;
     }
-
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final valueDate = DateTime(value.year, value.month, value.day);
-
-    // Check if past dates are allowed
     if (!allowPast && valueDate.isBefore(today)) {
       return DateTimeValidationError.pastDate;
     }
-
-    // Check if future dates are allowed
     if (!allowFuture && valueDate.isAfter(today)) {
       return DateTimeValidationError.futureDate;
     }
-
-    // Check minimum date constraint
     if (minDate != null &&
         valueDate
             .isBefore(DateTime(minDate!.year, minDate!.month, minDate!.day))) {
       return DateTimeValidationError.beforeMinDate;
     }
-
-    // Check maximum date constraint
     if (maxDate != null &&
         valueDate
             .isAfter(DateTime(maxDate!.year, maxDate!.month, maxDate!.day))) {
       return DateTimeValidationError.afterMaxDate;
     }
-
-    // Custom validation
     final result = customValidator?.call(value);
     if (result != null && result.isNotEmpty) {
       return DateTimeValidationError.custom;
@@ -82,7 +71,6 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
 
   String? get errorMessage {
     if (error == null) return null;
-
     return switch (error!) {
       DateTimeValidationError.empty => 'هذا الحقل مطلوب',
       DateTimeValidationError.invalidFormat => dateFormat != null
@@ -104,12 +92,9 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
     return '${date.day}/${date.month}/${date.year}';
   }
 
-  /// Helper method to parse string to DateTime
   static DateTime? parseDateString(String dateString, {String? format}) {
     if (dateString.isEmpty) return null;
-
     try {
-      // Try common formats
       final formats = [
         format ?? 'dd/MM/yyyy',
         'yyyy-MM-dd',
@@ -117,16 +102,13 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
         'MM/dd/yyyy',
         'yyyy/MM/dd',
       ];
-
       for (final _ in formats) {
         try {
-          // Simple parsing - in a real app you might use intl package
           final parts = dateString.split(RegExp(r'[/\-]'));
           if (parts.length == 3) {
             final day = int.parse(parts[0]);
             final month = int.parse(parts[1]);
             final year = int.parse(parts[2]);
-
             if (day > 0 &&
                 day <= 31 &&
                 month > 0 &&
