@@ -13,8 +13,8 @@ abstract class InputsEntity with _$InputsEntity {
     PhoneNumberInput? phoneNumber,
     GenericFormzInput? dialCode,
     GenericFormzInput? isoCode,
-    GenericFormzInput? isValidNumber,
-    GenericFormzInput? termsAccepted,
+    BoolFormzInput? isValidNumber,
+    BoolFormzInput? termsAccepted,
     bool? obscurePassword,
     bool? rememberMe,
   }) = _InputsEntity;

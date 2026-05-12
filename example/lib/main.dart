@@ -123,7 +123,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       obscureText: true,
                       validator: (_) => state.inputs.password?.errorMessage,
                     ),
-                    const SizedBox(height: 16),
                     TextFormField(
                       onChanged: (v) {
                         getIt<InputsBloc>().add(
@@ -143,7 +142,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         return state.inputs.confirmPassword?.errorMessage;
                       },
                     ),
-                    const SizedBox(height: 16),
                     TextFormField(
                       onChanged: (value) {
                         getIt<InputsBloc>().add(
@@ -165,35 +163,37 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             ?.name;
                       },
                     ),
-                    // const SizedBox(height: 16),
-                    // Row(
-                    //   children: [
-                    //     Checkbox(
-                    //       value: state.inputs.termsAccepted?.value ?? false,
-                    //       onChanged: (value) {
-                    //         getIt<InputsBloc>().add(
-                    //           InputsEvent.dataChanged(
-                    //             inputs: state.inputs.copyWith(
-                    //               termsAccepted: value ?? false,
-                    //             ),
-                    //           ),
-                    //         );
-                    //       },
-                    //     ),
-                    //     const Expanded(
-                    //       child: Text('I accept the terms and conditions'),
-                    //     ),
-                    //   ],
-                    // ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: state.inputs.termsAccepted?.value ?? false,
+                          onChanged: (value) {
+                            getIt<InputsBloc>().add(
+                              InputsEvent.dataChanged(
+                                inputs: state.inputs.copyWith(
+                                  termsAccepted: BoolFormzInput.dirty(value!),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        const Expanded(
+                          child: Text('I accept the terms and conditions'),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 24),
                     ElevatedButton(
                       onPressed: state.formzSubmissionStatus ==
                               FormzSubmissionStatus.inProgress
                           ? null
-                          : () {
-                              // ODO: Implement submit logic
-                            },
-                      child: const Text('Register'),
+                          : () {},
+                      child: Text(
+                        state.formzSubmissionStatus.isSuccess
+                            ? "valid"
+                            : "invalid",
+                      ),
                     ),
                   ],
                 );

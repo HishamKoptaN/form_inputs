@@ -33,7 +33,6 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
       );
     });
   }
-
   void emitCustomLoaded({
     required Emitter<InputsState> emit,
     required _Loaded state,

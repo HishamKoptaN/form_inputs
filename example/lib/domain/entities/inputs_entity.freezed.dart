@@ -22,8 +22,8 @@ mixin _$InputsEntity {
   PhoneNumberInput? get phoneNumber;
   GenericFormzInput? get dialCode;
   GenericFormzInput? get isoCode;
-  GenericFormzInput? get isValidNumber;
-  GenericFormzInput? get termsAccepted;
+  BoolFormzInput? get isValidNumber;
+  BoolFormzInput? get termsAccepted;
   bool? get obscurePassword;
   bool? get rememberMe;
 
@@ -100,8 +100,8 @@ abstract mixin class $InputsEntityCopyWith<$Res> {
       PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
-      GenericFormzInput? isValidNumber,
-      GenericFormzInput? termsAccepted,
+      BoolFormzInput? isValidNumber,
+      BoolFormzInput? termsAccepted,
       bool? obscurePassword,
       bool? rememberMe});
 }
@@ -167,11 +167,11 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
       isValidNumber: freezed == isValidNumber
           ? _self.isValidNumber
           : isValidNumber // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as BoolFormzInput?,
       termsAccepted: freezed == termsAccepted
           ? _self.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as BoolFormzInput?,
       obscurePassword: freezed == obscurePassword
           ? _self.obscurePassword
           : obscurePassword // ignore: cast_nullable_to_non_nullable
@@ -286,8 +286,8 @@ extension InputsEntityPatterns on InputsEntity {
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
-            GenericFormzInput? isValidNumber,
-            GenericFormzInput? termsAccepted,
+            BoolFormzInput? isValidNumber,
+            BoolFormzInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)?
         $default, {
@@ -338,8 +338,8 @@ extension InputsEntityPatterns on InputsEntity {
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
-            GenericFormzInput? isValidNumber,
-            GenericFormzInput? termsAccepted,
+            BoolFormzInput? isValidNumber,
+            BoolFormzInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)
         $default,
@@ -388,8 +388,8 @@ extension InputsEntityPatterns on InputsEntity {
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
-            GenericFormzInput? isValidNumber,
-            GenericFormzInput? termsAccepted,
+            BoolFormzInput? isValidNumber,
+            BoolFormzInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)?
         $default,
@@ -420,7 +420,7 @@ extension InputsEntityPatterns on InputsEntity {
 
 class _InputsEntity implements InputsEntity {
   const _InputsEntity(
-      {this.name = const GenericFormzInput.pure(minLength: 2, maxLength: 5),
+      {this.name,
       this.description,
       this.email,
       this.password,
@@ -434,7 +434,6 @@ class _InputsEntity implements InputsEntity {
       this.rememberMe});
 
   @override
-  @JsonKey()
   final GenericFormzInput? name;
   @override
   final GenericFormzInput? description;
@@ -451,9 +450,9 @@ class _InputsEntity implements InputsEntity {
   @override
   final GenericFormzInput? isoCode;
   @override
-  final GenericFormzInput? isValidNumber;
+  final BoolFormzInput? isValidNumber;
   @override
-  final GenericFormzInput? termsAccepted;
+  final BoolFormzInput? termsAccepted;
   @override
   final bool? obscurePassword;
   @override
@@ -534,8 +533,8 @@ abstract mixin class _$InputsEntityCopyWith<$Res>
       PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
-      GenericFormzInput? isValidNumber,
-      GenericFormzInput? termsAccepted,
+      BoolFormzInput? isValidNumber,
+      BoolFormzInput? termsAccepted,
       bool? obscurePassword,
       bool? rememberMe});
 }
@@ -602,11 +601,11 @@ class __$InputsEntityCopyWithImpl<$Res>
       isValidNumber: freezed == isValidNumber
           ? _self.isValidNumber
           : isValidNumber // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as BoolFormzInput?,
       termsAccepted: freezed == termsAccepted
           ? _self.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as BoolFormzInput?,
       obscurePassword: freezed == obscurePassword
           ? _self.obscurePassword
           : obscurePassword // ignore: cast_nullable_to_non_nullable
