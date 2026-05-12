@@ -31,9 +31,13 @@ class PasswordInput extends FormzInput<String, PasswordValidationError> {
       final hasSymbol = value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
       if (!hasSymbol) return PasswordValidationError.noSymbol;
     }
-
     return null;
   }
+
+  bool get hasUppercase => value.contains(RegExp(r'[A-Z]'));
+  bool get hasLowercase => value.contains(RegExp(r'[a-z]'));
+  bool get hasNumber => value.contains(RegExp(r'[0-9]'));
+  bool get hasSymbol => value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
 
   String? get errorMessage {
     return switch (error) {
