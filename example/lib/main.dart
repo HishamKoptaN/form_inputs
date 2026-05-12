@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:form_inputs_example/core/di/dependency_injection.dart';
 import 'package:formz/formz.dart';
-
 import 'bloc/inputs_bloc.dart';
 
 Future<void> main() async {
