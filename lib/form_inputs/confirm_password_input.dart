@@ -6,12 +6,20 @@ class ConfirmPasswordInput
     extends FormzInput<String, ConfirmPasswordValidationError> {
   final String password;
   const ConfirmPasswordInput.pure({this.password = ''}) : super.pure('');
-  const ConfirmPasswordInput.dirty({required this.password, String value = ''})
-      : super.dirty(value);
+  const ConfirmPasswordInput.dirty({
+    String value = '',
+    this.password = '',
+  }) : super.dirty(value);
+
   @override
   ConfirmPasswordValidationError? validator(String value) {
-    if (value.trim().isEmpty) return ConfirmPasswordValidationError.empty;
-    if (value != password) return ConfirmPasswordValidationError.mismatch;
+    if (value.trim().isEmpty) {
+      return ConfirmPasswordValidationError.empty;
+    }
+    if (password.isEmpty) return null;
+    if (value != password) {
+      return ConfirmPasswordValidationError.mismatch;
+    }
     return null;
   }
 }
