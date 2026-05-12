@@ -1,8 +1,7 @@
 import 'package:formz/formz.dart';
 
-/// الأخطاء الممكنة لأي checkbox
 enum GenericCheckboxValidationError { notChecked }
-/// كلاس قابل لإعادة الاستخدام لأي checkbox يحتاج تحقق
+
 class GenericCheckboxInput
     extends FormzInput<bool, GenericCheckboxValidationError> {
   const GenericCheckboxInput.pure() : super.pure(false);

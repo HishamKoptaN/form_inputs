@@ -1,22 +1,58 @@
 import 'package:formz/formz.dart';
 
-enum GenericValidationError { empty, custom }
+enum GenericValidationError {
+  empty,
+  custom,
+  tooShort,
+  tooLong,
+  invalidLength,
+}
 
-class GenericFormzInput<T> extends FormzInput<T?, GenericValidationError> {
-  final String? Function(T?)? customValidator;
+class GenericFormzInput extends FormzInput<String, GenericValidationError> {
+  final String? Function(String)? customValidator;
+  final int? minLength;
+  final int? maxLength;
+  final int? exactLength;
 
-  const GenericFormzInput.pure({this.customValidator}) : super.pure(null);
-  const GenericFormzInput.dirty(T? value, {this.customValidator})
-    : super.dirty(value);
+  const GenericFormzInput.pure({
+    this.customValidator,
+    this.minLength,
+    this.maxLength,
+    this.exactLength,
+  }) : super.pure('');
+
+  const GenericFormzInput.dirty(
+    String value, {
+    this.customValidator,
+    this.minLength,
+    this.maxLength,
+    this.exactLength,
+  }) : super.dirty(value);
 
   @override
-  GenericValidationError? validator(T? value) {
-    if (value == null) return GenericValidationError.empty;
-    if (value is String && value.trim().isEmpty) {
+  GenericValidationError? validator(String value) {
+    final v = value.trim();
+
+    if (v.isEmpty) {
       return GenericValidationError.empty;
     }
 
-    final result = customValidator?.call(value);
+    // exact length
+    if (exactLength != null && v.length != exactLength) {
+      return GenericValidationError.invalidLength;
+    }
+
+    // min length
+    if (minLength != null && v.length < minLength!) {
+      return GenericValidationError.tooShort;
+    }
+
+    // max length
+    if (maxLength != null && v.length > maxLength!) {
+      return GenericValidationError.tooLong;
+    }
+
+    final result = customValidator?.call(v);
     if (result != null && result.isNotEmpty) {
       return GenericValidationError.custom;
     }
@@ -25,8 +61,11 @@ class GenericFormzInput<T> extends FormzInput<T?, GenericValidationError> {
   }
 
   String? get errorMessage => switch (error) {
-    GenericValidationError.empty => 'هذا الحقل مطلوب',
-    GenericValidationError.custom => customValidator?.call(value),
-    _ => null,
-  };
+        GenericValidationError.empty => 'هذا الحقل مطلوب',
+        GenericValidationError.tooShort => 'القيمة قصيرة جدًا',
+        GenericValidationError.tooLong => 'القيمة طويلة جدًا',
+        GenericValidationError.invalidLength => 'عدد الحروف غير صحيح',
+        GenericValidationError.custom => customValidator?.call(value),
+        _ => null,
+      };
 }

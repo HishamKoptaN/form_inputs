@@ -2,20 +2,18 @@ name: form_inputs_example
 description: Demonstrates how to use the form_inputs package
 publish_to: 'none'
 version: 1.0.0+1
-
 environment:
   sdk: '>=3.0.0 <4.0.0'
   flutter: '>=3.0.0'
-
 dependencies:
   flutter:
     sdk: flutter
   formz: ^0.8.0
-  
-  # Local package dependency
   form_inputs:
     path: ..
-
+  freezed_annotation: ^3.1.0
+  flutter_bloc: ^9.1.1
+  injectable: ^3.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

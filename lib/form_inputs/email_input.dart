@@ -1,10 +1,17 @@
 import 'package:formz/formz.dart';
 
-enum EmailValidationError { empty, invalid }
+enum EmailValidationError { empty, invalid, domainNotAllowed }
 
 class EmailInput extends FormzInput<String, EmailValidationError> {
-  const EmailInput.pure() : super.pure('');
-  const EmailInput.dirty([super.value = '']) : super.dirty();
+  const EmailInput.pure({this.allowedDomains}) : super.pure('');
+  const EmailInput.dirty([super.value = '', this.allowedDomains])
+      : super.dirty();
+  final List<String>? allowedDomains;
+  String? get errorMessage {
+    if (error == null) return null;
+    return error!.message(allowedDomains);
+  }
+
   static final RegExp _emailRegex = RegExp(
     r'^[\w\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z]{2,}$',
   );
@@ -13,13 +20,23 @@ class EmailInput extends FormzInput<String, EmailValidationError> {
     final trimmed = value.trim();
     if (trimmed.isEmpty) return EmailValidationError.empty;
     if (!_emailRegex.hasMatch(trimmed)) return EmailValidationError.invalid;
+    if (allowedDomains != null && allowedDomains!.isNotEmpty) {
+      final domain = trimmed.split('@').last.toLowerCase();
+      if (!allowedDomains!.contains(domain)) {
+        return EmailValidationError.domainNotAllowed;
+      }
+    }
     return null;
   }
 }
 
 extension EmailValidationErrorX on EmailValidationError {
-  String get message => switch (this) {
-    EmailValidationError.empty => 'يرجى إدخال البريد الإلكتروني',
-    EmailValidationError.invalid => 'صيغة البريد الإلكتروني غير صحيحة',
-  };
+  String message([List<String>? allowedDomains]) {
+    return switch (this) {
+      EmailValidationError.empty => 'يرجى إدخال البريد الإلكتروني',
+      EmailValidationError.invalid => 'صيغة البريد الإلكتروني غير صحيحة',
+      EmailValidationError.domainNotAllowed =>
+        ' نطاق البريد الإلكتروني غير مسموح به مسموح فقط بنطاقات: ${allowedDomains?.join(', ')}',
+    };
+  }
 }

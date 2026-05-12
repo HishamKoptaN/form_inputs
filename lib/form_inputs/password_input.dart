@@ -7,8 +7,7 @@ class PasswordInput extends FormzInput<String, PasswordValidationError> {
 
   const PasswordInput.pure({this.strictValidation = false}) : super.pure('');
   const PasswordInput.dirty([String value = '', this.strictValidation = false])
-    : super.dirty(value);
-
+      : super.dirty(value);
   @override
   PasswordValidationError? validator(String value) {
     if (value.isEmpty) return PasswordValidationError.empty;
