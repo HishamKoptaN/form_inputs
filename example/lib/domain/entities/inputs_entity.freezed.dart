@@ -15,10 +15,11 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$InputsEntity {
   GenericFormzInput? get name;
+  GenericFormzInput? get description;
   EmailInput? get email;
   PasswordInput? get password;
   PasswordInput? get confirmPassword;
-  GenericFormzInput? get phoneNumber;
+  PhoneNumberInput? get phoneNumber;
   GenericFormzInput? get dialCode;
   GenericFormzInput? get isoCode;
   GenericFormzInput? get isValidNumber;
@@ -40,6 +41,8 @@ mixin _$InputsEntity {
         (other.runtimeType == runtimeType &&
             other is InputsEntity &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -64,6 +67,7 @@ mixin _$InputsEntity {
   int get hashCode => Object.hash(
       runtimeType,
       name,
+      description,
       email,
       password,
       confirmPassword,
@@ -77,7 +81,7 @@ mixin _$InputsEntity {
 
   @override
   String toString() {
-    return 'InputsEntity(name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+    return 'InputsEntity(name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
   }
 }
 
@@ -89,10 +93,11 @@ abstract mixin class $InputsEntityCopyWith<$Res> {
   @useResult
   $Res call(
       {GenericFormzInput? name,
+      GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
       PasswordInput? confirmPassword,
-      GenericFormzInput? phoneNumber,
+      PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
       GenericFormzInput? isValidNumber,
@@ -114,6 +119,7 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? description = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? confirmPassword = freezed,
@@ -130,6 +136,10 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as GenericFormzInput?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as GenericFormzInput?,
       email: freezed == email
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -145,7 +155,7 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as PhoneNumberInput?,
       dialCode: freezed == dialCode
           ? _self.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
@@ -269,10 +279,11 @@ extension InputsEntityPatterns on InputsEntity {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             GenericFormzInput? name,
+            GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
             PasswordInput? confirmPassword,
-            GenericFormzInput? phoneNumber,
+            PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
             GenericFormzInput? isValidNumber,
@@ -287,6 +298,7 @@ extension InputsEntityPatterns on InputsEntity {
       case _InputsEntity() when $default != null:
         return $default(
             _that.name,
+            _that.description,
             _that.email,
             _that.password,
             _that.confirmPassword,
@@ -319,10 +331,11 @@ extension InputsEntityPatterns on InputsEntity {
   TResult when<TResult extends Object?>(
     TResult Function(
             GenericFormzInput? name,
+            GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
             PasswordInput? confirmPassword,
-            GenericFormzInput? phoneNumber,
+            PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
             GenericFormzInput? isValidNumber,
@@ -336,6 +349,7 @@ extension InputsEntityPatterns on InputsEntity {
       case _InputsEntity():
         return $default(
             _that.name,
+            _that.description,
             _that.email,
             _that.password,
             _that.confirmPassword,
@@ -367,10 +381,11 @@ extension InputsEntityPatterns on InputsEntity {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             GenericFormzInput? name,
+            GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
             PasswordInput? confirmPassword,
-            GenericFormzInput? phoneNumber,
+            PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
             GenericFormzInput? isValidNumber,
@@ -384,6 +399,7 @@ extension InputsEntityPatterns on InputsEntity {
       case _InputsEntity() when $default != null:
         return $default(
             _that.name,
+            _that.description,
             _that.email,
             _that.password,
             _that.confirmPassword,
@@ -404,7 +420,8 @@ extension InputsEntityPatterns on InputsEntity {
 
 class _InputsEntity implements InputsEntity {
   const _InputsEntity(
-      {this.name,
+      {this.name = const GenericFormzInput.pure(minLength: 2, maxLength: 5),
+      this.description,
       this.email,
       this.password,
       this.confirmPassword,
@@ -417,7 +434,10 @@ class _InputsEntity implements InputsEntity {
       this.rememberMe});
 
   @override
+  @JsonKey()
   final GenericFormzInput? name;
+  @override
+  final GenericFormzInput? description;
   @override
   final EmailInput? email;
   @override
@@ -425,7 +445,7 @@ class _InputsEntity implements InputsEntity {
   @override
   final PasswordInput? confirmPassword;
   @override
-  final GenericFormzInput? phoneNumber;
+  final PhoneNumberInput? phoneNumber;
   @override
   final GenericFormzInput? dialCode;
   @override
@@ -453,6 +473,8 @@ class _InputsEntity implements InputsEntity {
         (other.runtimeType == runtimeType &&
             other is _InputsEntity &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -477,6 +499,7 @@ class _InputsEntity implements InputsEntity {
   int get hashCode => Object.hash(
       runtimeType,
       name,
+      description,
       email,
       password,
       confirmPassword,
@@ -490,7 +513,7 @@ class _InputsEntity implements InputsEntity {
 
   @override
   String toString() {
-    return 'InputsEntity(name: $name, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+    return 'InputsEntity(name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
   }
 }
 
@@ -504,10 +527,11 @@ abstract mixin class _$InputsEntityCopyWith<$Res>
   @useResult
   $Res call(
       {GenericFormzInput? name,
+      GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
       PasswordInput? confirmPassword,
-      GenericFormzInput? phoneNumber,
+      PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
       GenericFormzInput? isValidNumber,
@@ -530,6 +554,7 @@ class __$InputsEntityCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   $Res call({
     Object? name = freezed,
+    Object? description = freezed,
     Object? email = freezed,
     Object? password = freezed,
     Object? confirmPassword = freezed,
@@ -546,6 +571,10 @@ class __$InputsEntityCopyWithImpl<$Res>
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as GenericFormzInput?,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as GenericFormzInput?,
       email: freezed == email
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -561,7 +590,7 @@ class __$InputsEntityCopyWithImpl<$Res>
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as GenericFormzInput?,
+              as PhoneNumberInput?,
       dialCode: freezed == dialCode
           ? _self.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable

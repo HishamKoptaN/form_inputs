@@ -7,13 +7,13 @@ import 'package:formz/formz.dart';
 import 'bloc/inputs_bloc.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,7 +63,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              name: GenericFormzInput.dirty(v),
+                              name: GenericFormzInput.dirty(
+                                value: v,
+                                minLength: 3,
+                                maxLength: 15,
+                              ),
                             ),
                           ),
                         );
@@ -84,7 +88,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              email: EmailInput.dirty(v),
+                              email: EmailInput.dirty(v, const ['gmail.com']),
                             ),
                           ),
                         );
@@ -101,62 +105,66 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       },
                     ),
                     const SizedBox(height: 16),
-                    // TextFormField(
-                    //   onChanged: (value) {
-                    //     getIt<InputsBloc>().add(
-                    //       InputsEvent.dataChanged(
-                    //         inputs: state.inputs.copyWith(
-                    //           password: PasswordInput.dirty(value),
-                    //         ),
-                    //       ),
-                    //     );
-                    //   },
-                    //   decoration: InputDecoration(
-                    //     labelText: 'Password',
-                    //     hintText: 'Enter your password',
-                    //     errorText: state.inputs.password?.error,
-                    //   ),
-                    //   obscureText: true,
-                    //   validator: (_) => state.inputs.password?.error,
-                    // ),
-                    // const SizedBox(height: 16),
-
-                    // // Confirm Password Input
-                    // TextFormField(
-                    //   onChanged: (value) {
-                    //     getIt<InputsBloc>().add(
-                    //       InputsEvent.dataChanged(
-                    //         inputs:
-                    //             state.inputs.copyWith(confirmPassword: value),
-                    //       ),
-                    //     );
-                    //   },
-                    //   decoration: InputDecoration(
-                    //     labelText: 'Confirm Password',
-                    //     hintText: 'Confirm your password',
-                    //     errorText: state.inputs.confirmPassword?.error,
-                    //   ),
-                    //   obscureText: true,
-                    //   validator: (_) => state.inputs.confirmPassword?.error,
-                    // ),
-                    // const SizedBox(height: 16),
-                    // TextFormField(
-                    //   onChanged: (value) {
-                    //     getIt<InputsBloc>().add(
-                    //       InputsEvent.dataChanged(
-                    //         inputs: state.inputs.copyWith(phoneNumber: value),
-                    //       ),
-                    //     );
-                    //   },
-                    //   decoration: InputDecoration(
-                    //     labelText: 'Phone Number',
-                    //     hintText: 'Enter your phone number',
-                    //     errorText: state.inputs.phoneNumber?.errorMessage,
-                    //   ),
-                    //   keyboardType: TextInputType.phone,
-                    //   validator: (_) => state.inputs.phoneNumber
-                    //       ?.validator(state.inputs.phoneNumber?.value),
-                    // ),
+                    TextFormField(
+                      onChanged: (v) {
+                        getIt<InputsBloc>().add(
+                          InputsEvent.dataChanged(
+                            inputs: state.inputs.copyWith(
+                              password: PasswordInput.dirty(v, true),
+                            ),
+                          ),
+                        );
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: 'Enter your password',
+                        errorText: state.inputs.password?.errorMessage,
+                      ),
+                      obscureText: true,
+                      validator: (_) => state.inputs.password?.errorMessage,
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      onChanged: (v) {
+                        getIt<InputsBloc>().add(
+                          InputsEvent.dataChanged(
+                            inputs: state.inputs.copyWith(
+                                confirmPassword: PasswordInput.dirty(v)),
+                          ),
+                        );
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Confirm Password',
+                        hintText: 'Confirm your password',
+                        errorText: state.inputs.confirmPassword?.errorMessage,
+                      ),
+                      obscureText: true,
+                      validator: (_) {
+                        return state.inputs.confirmPassword?.errorMessage;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      onChanged: (value) {
+                        getIt<InputsBloc>().add(
+                          InputsEvent.dataChanged(
+                            inputs: state.inputs.copyWith(
+                                phoneNumber: PhoneNumberInput.dirty(value)),
+                          ),
+                        );
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        hintText: 'Enter your phone number',
+                        errorText: state.inputs.phoneNumber?.error?.name,
+                      ),
+                      keyboardType: TextInputType.phone,
+                      validator: (_) {
+                        return state.inputs.phoneNumber
+                            ?.validator(state.inputs.phoneNumber?.value ?? '')
+                            ?.name;
+                      },
+                    ),
                     // const SizedBox(height: 16),
                     // Row(
                     //   children: [

@@ -25,7 +25,7 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
             loaded: (state) {
               emitCustomLoaded(
                 emit: emit,
-                state: state.copyWith(inputs: inputs!),
+                state: state.copyWith(inputs: inputs),
               );
             },
           );
@@ -50,11 +50,10 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
   void emitCustomFailure({
     required Emitter<InputsState> emit,
   }) {
-    return emit(InputsState.failure(error: ''));
+    return emit(const InputsState.failure(error: ''));
   }
 
   FormzSubmissionStatus _validateForm({required InputsEntity inputs}) {
-    // Validate email domain
     String? emailValue = inputs.email?.value;
     bool isEmailDomainValid = emailValue != null &&
         (emailValue.endsWith('@gmail.com') ||
@@ -76,9 +75,8 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
           hasNumber &&
           isLongEnough;
     }
-
     final formzValid = Formz.validate([
-      inputs.name ?? const GenericFormzInput.pure(),
+      GenericFormzInput.dirty(value: inputs.name?.value ?? ''),
       inputs.email ?? const EmailInput.pure(),
       inputs.password ?? const PasswordInput.pure(),
       inputs.confirmPassword ?? const PasswordInput.pure(),
@@ -87,7 +85,6 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
         password: inputs.password?.value ?? '',
       ),
     ]);
-
     return (formzValid &&
             inputs.isValidNumber?.value == true &&
             isEmailDomainValid &&

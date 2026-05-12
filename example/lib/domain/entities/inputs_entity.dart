@@ -6,10 +6,11 @@ part 'inputs_entity.freezed.dart';
 abstract class InputsEntity with _$InputsEntity {
   const factory InputsEntity({
     GenericFormzInput? name,
+    GenericFormzInput? description,
     EmailInput? email,
     PasswordInput? password,
     PasswordInput? confirmPassword,
-    GenericFormzInput? phoneNumber,
+    PhoneNumberInput? phoneNumber,
     GenericFormzInput? dialCode,
     GenericFormzInput? isoCode,
     GenericFormzInput? isValidNumber,
