@@ -9,3 +9,5 @@ export 'form_inputs/file_formz_input.dart';
 export 'form_inputs/generic_checkbox_input.dart';
 export 'form_inputs/name_input.dart';
 export 'form_inputs/bool_formz_input.dart';
+export 'form_inputs/datetime_input.dart';
+export 'form_inputs/list_input.dart';
