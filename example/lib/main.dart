@@ -127,18 +127,22 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                                confirmPassword: PasswordInput.dirty(v)),
+                              confirmPassword: ConfirmPasswordInput.dirty(
+                                value: v,
+                                password: state.inputs.password?.value ?? '',
+                              ),
+                            ),
                           ),
                         );
                       },
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
                         hintText: 'Confirm your password',
-                        errorText: state.inputs.confirmPassword?.errorMessage,
+                        errorText: state.inputs.confirmPassword?.error?.message,
                       ),
                       obscureText: true,
                       validator: (_) {
-                        return state.inputs.confirmPassword?.errorMessage;
+                        return state.inputs.confirmPassword?.error?.message;
                       },
                     ),
                     TextFormField(
@@ -146,7 +150,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                                phoneNumber: PhoneNumberInput.dirty(value)),
+                              phoneNumber: PhoneNumberInput.dirty(value),
+                            ),
                           ),
                         );
                       },

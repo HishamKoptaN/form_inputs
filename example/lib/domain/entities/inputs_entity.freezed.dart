@@ -18,7 +18,7 @@ mixin _$InputsEntity {
   GenericFormzInput? get description;
   EmailInput? get email;
   PasswordInput? get password;
-  PasswordInput? get confirmPassword;
+  ConfirmPasswordInput? get confirmPassword;
   PhoneNumberInput? get phoneNumber;
   GenericFormzInput? get dialCode;
   GenericFormzInput? get isoCode;
@@ -96,7 +96,7 @@ abstract mixin class $InputsEntityCopyWith<$Res> {
       GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
-      PasswordInput? confirmPassword,
+      ConfirmPasswordInput? confirmPassword,
       PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
@@ -151,7 +151,7 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
       confirmPassword: freezed == confirmPassword
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as PasswordInput?,
+              as ConfirmPasswordInput?,
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -282,7 +282,7 @@ extension InputsEntityPatterns on InputsEntity {
             GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
-            PasswordInput? confirmPassword,
+            ConfirmPasswordInput? confirmPassword,
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
@@ -334,7 +334,7 @@ extension InputsEntityPatterns on InputsEntity {
             GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
-            PasswordInput? confirmPassword,
+            ConfirmPasswordInput? confirmPassword,
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
@@ -384,7 +384,7 @@ extension InputsEntityPatterns on InputsEntity {
             GenericFormzInput? description,
             EmailInput? email,
             PasswordInput? password,
-            PasswordInput? confirmPassword,
+            ConfirmPasswordInput? confirmPassword,
             PhoneNumberInput? phoneNumber,
             GenericFormzInput? dialCode,
             GenericFormzInput? isoCode,
@@ -442,7 +442,7 @@ class _InputsEntity implements InputsEntity {
   @override
   final PasswordInput? password;
   @override
-  final PasswordInput? confirmPassword;
+  final ConfirmPasswordInput? confirmPassword;
   @override
   final PhoneNumberInput? phoneNumber;
   @override
@@ -529,7 +529,7 @@ abstract mixin class _$InputsEntityCopyWith<$Res>
       GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
-      PasswordInput? confirmPassword,
+      ConfirmPasswordInput? confirmPassword,
       PhoneNumberInput? phoneNumber,
       GenericFormzInput? dialCode,
       GenericFormzInput? isoCode,
@@ -585,7 +585,7 @@ class __$InputsEntityCopyWithImpl<$Res>
       confirmPassword: freezed == confirmPassword
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as PasswordInput?,
+              as ConfirmPasswordInput?,
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable

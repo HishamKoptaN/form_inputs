@@ -9,7 +9,7 @@ abstract class InputsEntity with _$InputsEntity {
     GenericFormzInput? description,
     EmailInput? email,
     PasswordInput? password,
-    PasswordInput? confirmPassword,
+    ConfirmPasswordInput? confirmPassword,
     PhoneNumberInput? phoneNumber,
     GenericFormzInput? dialCode,
     GenericFormzInput? isoCode,

@@ -78,7 +78,7 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
       GenericFormzInput.dirty(value: inputs.name?.value ?? ''),
       inputs.email ?? const EmailInput.pure(),
       inputs.password ?? const PasswordInput.pure(),
-      inputs.confirmPassword ?? const PasswordInput.pure(),
+      inputs.confirmPassword ?? const ConfirmPasswordInput.pure(),
       ConfirmPasswordInput.dirty(
         value: inputs.confirmPassword?.value ?? '',
         password: inputs.password?.value ?? '',
