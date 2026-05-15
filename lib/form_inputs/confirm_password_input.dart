@@ -8,10 +8,15 @@ enum ConfirmPasswordValidationError {
 class ConfirmPasswordInput
     extends FormzInput<String, ConfirmPasswordValidationError> {
   final String password;
-  const ConfirmPasswordInput.pure({this.password = ''}) : super.pure('');
+  final Map<ConfirmPasswordValidationError, String>? errorMessages;
+  const ConfirmPasswordInput.pure({
+    this.password = '',
+    this.errorMessages,
+  }) : super.pure('');
   const ConfirmPasswordInput.dirty({
     String value = '',
     this.password = '',
+    this.errorMessages,
   }) : super.dirty(value);
 
   bool get hasPassword => password.trim().isNotEmpty;
@@ -39,15 +44,17 @@ class ConfirmPasswordInput
 
     return null;
   }
-}
 
-extension ConfirmPasswordValidationErrorX on ConfirmPasswordValidationError {
-  String get message {
-    switch (this) {
+  String? get message {
+    if (error == null) return null;
+    if (errorMessages != null && errorMessages!.containsKey(error)) {
+      return errorMessages![error];
+    }
+    switch (error!) {
       case ConfirmPasswordValidationError.empty:
-        return  'يرجى تأكيد كلمة المرور';
+        return 'يرجى تأكيد كلمة المرور';
       case ConfirmPasswordValidationError.mismatched:
-        return 'كلمة المرور غير متطابقة';
+        return 'كلمة المرور غير مطابقة';
     }
   }
 }
