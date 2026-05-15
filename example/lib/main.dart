@@ -66,6 +66,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 value: v,
                                 minLength: 3,
                                 maxLength: 15,
+                                errorMessages: const {
+                                  GenericValidationError.empty:
+                                      'يرجى إدخال الاسم',
+                                  GenericValidationError.short:
+                                      'الاسم قصير جدًا',
+                                  GenericValidationError.long:
+                                      'الاسم طويل جدًا',
+                                },
                               ),
                             ),
                           ),

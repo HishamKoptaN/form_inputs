@@ -3,8 +3,8 @@ import 'package:formz/formz.dart';
 enum GenericValidationError {
   empty,
   custom,
-  tooShort,
-  tooLong,
+  short,
+  long,
   invalidLength,
 }
 
@@ -14,6 +14,11 @@ class GenericFormzInput extends FormzInput<String, GenericValidationError> {
   final int? minLength;
   final int? maxLength;
   final int? exactLength;
+  final String? emptyMessage;
+  final String? shortMessage;
+  final String? longMessage;
+  final String? invalidLengthMessage;
+  final Map<GenericValidationError, String>? errorMessages;
 
   const GenericFormzInput.pure({
     this.value = '',
@@ -21,6 +26,11 @@ class GenericFormzInput extends FormzInput<String, GenericValidationError> {
     this.minLength,
     this.maxLength,
     this.exactLength,
+    this.emptyMessage,
+    this.shortMessage,
+    this.longMessage,
+    this.invalidLengthMessage,
+    this.errorMessages,
   }) : super.pure('');
 
   const GenericFormzInput.dirty({
@@ -29,6 +39,11 @@ class GenericFormzInput extends FormzInput<String, GenericValidationError> {
     this.minLength,
     this.maxLength,
     this.exactLength,
+    this.emptyMessage,
+    this.shortMessage,
+    this.longMessage,
+    this.invalidLengthMessage,
+    this.errorMessages,
   }) : super.dirty(value);
 
   @override
@@ -41,10 +56,10 @@ class GenericFormzInput extends FormzInput<String, GenericValidationError> {
       return GenericValidationError.invalidLength;
     }
     if (minLength != null && v.length < minLength!) {
-      return GenericValidationError.tooShort;
+      return GenericValidationError.short;
     }
     if (maxLength != null && v.length > maxLength!) {
-      return GenericValidationError.tooLong;
+      return GenericValidationError.long;
     }
 
     final result = customValidator?.call(v);
@@ -55,13 +70,26 @@ class GenericFormzInput extends FormzInput<String, GenericValidationError> {
   }
 
   String? get errorMessage {
-    return switch (error) {
-      GenericValidationError.empty => 'هذا الحقل مطلوب',
-      GenericValidationError.tooShort => 'القيمة قصيرة جدًا',
-      GenericValidationError.tooLong => 'القيمة طويلة جدًا',
-      GenericValidationError.invalidLength => 'عدد الحروف غير صحيح',
-      GenericValidationError.custom => customValidator?.call(value),
-      _ => null,
-    };
+    if (error == null) return null;
+
+    if (errorMessages != null && errorMessages!.containsKey(error)) {
+      return errorMessages![error];
+    }
+    switch (error!) {
+      case GenericValidationError.empty:
+        return 'هذا الحقل مطلوب';
+
+      case GenericValidationError.short:
+        return 'المدخل اقصر من الحد الادني المسموح به';
+
+      case GenericValidationError.long:
+        return 'المدخل اكثر من الحد المسموح به';
+
+      case GenericValidationError.invalidLength:
+        return 'عدد الأحرف غير صحيح';
+
+      case GenericValidationError.custom:
+        return customValidator?.call(value);
+    }
   }
 }
