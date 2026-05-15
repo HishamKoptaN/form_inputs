@@ -146,11 +146,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       decoration: InputDecoration(
                         labelText: 'Confirm Password',
                         hintText: 'Confirm your password',
-                        errorText: state.inputs.confirmPassword?.error?.message,
+                        errorText: state.inputs.confirmPassword?.errorMessage,
                       ),
                       obscureText: true,
                       validator: (_) {
-                        return state.inputs.confirmPassword?.error?.message;
+                        return state.inputs.confirmPassword?.errorMessage;
                       },
                     ),
                     TextFormField(

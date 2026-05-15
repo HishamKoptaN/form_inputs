@@ -45,7 +45,7 @@ class ConfirmPasswordInput
     return null;
   }
 
-  String? get message {
+  String? get errorMessage {
     if (error == null) return null;
     if (errorMessages != null && errorMessages!.containsKey(error)) {
       return errorMessages![error];
