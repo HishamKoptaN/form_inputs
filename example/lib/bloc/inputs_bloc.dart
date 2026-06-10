@@ -53,41 +53,18 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
   }
 
   FormzSubmissionStatus _validateForm({required InputsEntity inputs}) {
-    String? emailValue = inputs.email?.value;
-    bool isEmailDomainValid = emailValue != null &&
-        (emailValue.endsWith('@gmail.com') ||
-            emailValue.endsWith('@icloud.com'));
-    String? passwordValue = inputs.password?.value;
-    bool isPasswordStrong = false;
-    if (passwordValue != null && passwordValue.isNotEmpty) {
-      bool hasUppercase = passwordValue.contains(RegExp(r'[A-Z]'));
-      bool hasLowercase = passwordValue.contains(RegExp(r'[a-z]'));
-      bool hasSymbol = passwordValue.contains(
-        RegExp(r'[!@#$%^&*(),.?":{}|<>]'),
-      );
-      bool hasNumber = passwordValue.contains(RegExp(r'[0-9]'));
-      bool isLongEnough = passwordValue.length >= 8;
-
-      isPasswordStrong = hasUppercase &&
-          hasLowercase &&
-          hasSymbol &&
-          hasNumber &&
-          isLongEnough;
-    }
     final formzValid = Formz.validate([
-      GenericFormzInput.dirty(value: inputs.name?.value ?? ''),
-      inputs.email ?? const EmailInput.pure(),
-      inputs.password ?? const PasswordInput.pure(),
-      inputs.confirmPassword ?? const ConfirmPasswordInput.pure(),
-      ConfirmPasswordInput.dirty(
-        value: inputs.confirmPassword?.value ?? '',
-        password: inputs.password?.value ?? '',
-      ),
+      inputs.link ?? const LinkInput.pure(),
+      // GenericFormzInput.dirty(value: inputs.name?.value ?? ''),
+      // inputs.email ?? const EmailInput.pure(),
+      // inputs.password ?? const PasswordInput.pure(),
+      // inputs.confirmPassword ?? const ConfirmPasswordInput.pure(),
+      // ConfirmPasswordInput.dirty(
+      //   value: inputs.confirmPassword?.value ?? '',
+      //   password: inputs.password?.value ?? '',
+      // ),
     ]);
-    return (formzValid &&
-            inputs.isValidNumber?.value == true &&
-            isEmailDomainValid &&
-            isPasswordStrong)
+    return (formzValid)
         ? FormzSubmissionStatus.success
         : FormzSubmissionStatus.failure;
   }
