@@ -62,6 +62,27 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
+                              link: LinkInput.dirty(value: v),
+                            ),
+                          ),
+                        );
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Link',
+                        hintText: 'Enter your link',
+                        errorText: state.inputs.link?.error?.message,
+                      ),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.text,
+                      validator: (_) {
+                        return state.inputs.link?.error?.message;
+                      },
+                    ),
+                    TextFormField(
+                      onChanged: (v) {
+                        getIt<InputsBloc>().add(
+                          InputsEvent.dataChanged(
+                            inputs: state.inputs.copyWith(
                               name: GenericFormzInput.dirty(
                                 value: v,
                                 minLength: 3,

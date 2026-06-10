@@ -14,6 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$InputsEntity {
+  LinkInput? get link;
   GenericFormzInput? get name;
   GenericFormzInput? get description;
   EmailInput? get email;
@@ -40,6 +41,7 @@ mixin _$InputsEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is InputsEntity &&
+            (identical(other.link, link) || other.link == link) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -66,6 +68,7 @@ mixin _$InputsEntity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      link,
       name,
       description,
       email,
@@ -81,7 +84,7 @@ mixin _$InputsEntity {
 
   @override
   String toString() {
-    return 'InputsEntity(name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+    return 'InputsEntity(link: $link, name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
   }
 }
 
@@ -92,7 +95,8 @@ abstract mixin class $InputsEntityCopyWith<$Res> {
       _$InputsEntityCopyWithImpl;
   @useResult
   $Res call(
-      {GenericFormzInput? name,
+      {LinkInput? link,
+      GenericFormzInput? name,
       GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
@@ -118,6 +122,7 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? link = freezed,
     Object? name = freezed,
     Object? description = freezed,
     Object? email = freezed,
@@ -132,6 +137,10 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
     Object? rememberMe = freezed,
   }) {
     return _then(_self.copyWith(
+      link: freezed == link
+          ? _self.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as LinkInput?,
       name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -278,6 +287,7 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
+            LinkInput? link,
             GenericFormzInput? name,
             GenericFormzInput? description,
             EmailInput? email,
@@ -297,6 +307,7 @@ extension InputsEntityPatterns on InputsEntity {
     switch (_that) {
       case _InputsEntity() when $default != null:
         return $default(
+            _that.link,
             _that.name,
             _that.description,
             _that.email,
@@ -330,6 +341,7 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
+            LinkInput? link,
             GenericFormzInput? name,
             GenericFormzInput? description,
             EmailInput? email,
@@ -348,6 +360,7 @@ extension InputsEntityPatterns on InputsEntity {
     switch (_that) {
       case _InputsEntity():
         return $default(
+            _that.link,
             _that.name,
             _that.description,
             _that.email,
@@ -380,6 +393,7 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
+            LinkInput? link,
             GenericFormzInput? name,
             GenericFormzInput? description,
             EmailInput? email,
@@ -398,6 +412,7 @@ extension InputsEntityPatterns on InputsEntity {
     switch (_that) {
       case _InputsEntity() when $default != null:
         return $default(
+            _that.link,
             _that.name,
             _that.description,
             _that.email,
@@ -420,7 +435,8 @@ extension InputsEntityPatterns on InputsEntity {
 
 class _InputsEntity implements InputsEntity {
   const _InputsEntity(
-      {this.name,
+      {this.link,
+      this.name,
       this.description,
       this.email,
       this.password,
@@ -433,6 +449,8 @@ class _InputsEntity implements InputsEntity {
       this.obscurePassword,
       this.rememberMe});
 
+  @override
+  final LinkInput? link;
   @override
   final GenericFormzInput? name;
   @override
@@ -471,6 +489,7 @@ class _InputsEntity implements InputsEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _InputsEntity &&
+            (identical(other.link, link) || other.link == link) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -497,6 +516,7 @@ class _InputsEntity implements InputsEntity {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      link,
       name,
       description,
       email,
@@ -512,7 +532,7 @@ class _InputsEntity implements InputsEntity {
 
   @override
   String toString() {
-    return 'InputsEntity(name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
+    return 'InputsEntity(link: $link, name: $name, description: $description, email: $email, password: $password, confirmPassword: $confirmPassword, phoneNumber: $phoneNumber, dialCode: $dialCode, isoCode: $isoCode, isValidNumber: $isValidNumber, termsAccepted: $termsAccepted, obscurePassword: $obscurePassword, rememberMe: $rememberMe)';
   }
 }
 
@@ -525,7 +545,8 @@ abstract mixin class _$InputsEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {GenericFormzInput? name,
+      {LinkInput? link,
+      GenericFormzInput? name,
       GenericFormzInput? description,
       EmailInput? email,
       PasswordInput? password,
@@ -552,6 +573,7 @@ class __$InputsEntityCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
+    Object? link = freezed,
     Object? name = freezed,
     Object? description = freezed,
     Object? email = freezed,
@@ -566,6 +588,10 @@ class __$InputsEntityCopyWithImpl<$Res>
     Object? rememberMe = freezed,
   }) {
     return _then(_InputsEntity(
+      link: freezed == link
+          ? _self.link
+          : link // ignore: cast_nullable_to_non_nullable
+              as LinkInput?,
       name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable

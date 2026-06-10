@@ -5,6 +5,7 @@ part 'inputs_entity.freezed.dart';
 @freezed
 abstract class InputsEntity with _$InputsEntity {
   const factory InputsEntity({
+    LinkInput? link,
     GenericFormzInput? name,
     GenericFormzInput? description,
     EmailInput? email,
