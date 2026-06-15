@@ -14,7 +14,7 @@ class LinkInput extends FormzInput<String, LinkValidationError> {
     String? invalidMessage,
   }) : super.dirty(value);
   static final RegExp _linkRegex = RegExp(
-    r'^(https?:\/\/)?([\w\d\-]+\.)+[\w\d\-]+(\/[\w\d\-\.\?#]*)*$',
+    r'^https?:\/\/.+$',
     caseSensitive: false,
   );
   @override
