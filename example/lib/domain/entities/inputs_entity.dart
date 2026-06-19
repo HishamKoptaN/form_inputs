@@ -1,4 +1,5 @@
 import 'package:form_inputs/form_inputs.dart';
+import 'package:form_inputs/form_inputs/username_Input.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'inputs_entity.freezed.dart';
 
@@ -6,14 +7,15 @@ part 'inputs_entity.freezed.dart';
 abstract class InputsEntity with _$InputsEntity {
   const factory InputsEntity({
     LinkInput? link,
-    GenericFormzInput? name,
-    GenericFormzInput? description,
+    GenericInput? name,
+    GenericInput? description,
     EmailInput? email,
+    UsernameInput? username,
     PasswordInput? password,
     ConfirmPasswordInput? confirmPassword,
     PhoneNumberInput? phoneNumber,
-    GenericFormzInput? dialCode,
-    GenericFormzInput? isoCode,
+    GenericInput? dialCode,
+    GenericInput? isoCode,
     BoolFormzInput? isValidNumber,
     BoolFormzInput? termsAccepted,
     bool? obscurePassword,

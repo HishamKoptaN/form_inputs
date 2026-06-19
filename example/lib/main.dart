@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
+import 'package:form_inputs/form_inputs/username_Input.dart';
 import 'package:form_inputs_example/core/di/dependency_injection.dart';
 import 'package:formz/formz.dart';
 import 'bloc/inputs_bloc.dart';
@@ -83,7 +84,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              name: GenericFormzInput.dirty(
+                              name: GenericInput.dirty(
                                 value: v,
                                 minLength: 3,
                                 maxLength: 15,
@@ -130,6 +131,29 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       keyboardType: TextInputType.emailAddress,
                       validator: (_) {
                         return state.inputs.email?.errorMessage;
+                      },
+                    ),
+                    TextFormField(
+                      onChanged: (v) {
+                        getIt<InputsBloc>().add(
+                          InputsEvent.dataChanged(
+                            inputs: state.inputs.copyWith(
+                              username: UsernameInput.dirty(
+                                v,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'username',
+                        hintText: 'Enter your username',
+                        errorText: state.inputs.username?.errorMessage,
+                      ),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.text,
+                      validator: (_) {
+                        return state.inputs.username?.errorMessage ?? '';
                       },
                     ),
                     const SizedBox(height: 16),
