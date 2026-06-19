@@ -10,7 +10,7 @@ enum DateTimeValidationError {
   custom,
 }
 
-class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
+class DateTimeFormInput extends FormzInput<DateTime?, DateTimeValidationError> {
   final DateTime? minDate;
   final DateTime? maxDate;
   final bool allowPast;
@@ -18,7 +18,7 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
   final String? Function(DateTime?)? customValidator;
   final String? dateFormat;
 
-  const DateTimeInput.pure({
+  const DateTimeFormInput.pure({
     this.minDate,
     this.maxDate,
     this.allowPast = true,
@@ -27,7 +27,7 @@ class DateTimeInput extends FormzInput<DateTime?, DateTimeValidationError> {
     this.dateFormat,
   }) : super.pure(null);
 
-  const DateTimeInput.dirty({
+  const DateTimeFormInput.dirty({
     required DateTime? value,
     this.minDate,
     this.maxDate,

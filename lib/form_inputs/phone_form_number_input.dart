@@ -5,9 +5,9 @@ enum PhoneNumberValidationError {
   invalid,
 }
 
-class PhoneNumberInput extends FormzInput<String, PhoneNumberValidationError> {
-  const PhoneNumberInput.pure() : super.pure('');
-  const PhoneNumberInput.dirty([super.value = '']) : super.dirty();
+class PhoneNumberFormInput extends FormzInput<String, PhoneNumberValidationError> {
+  const PhoneNumberFormInput.pure() : super.pure('');
+  const PhoneNumberFormInput.dirty([super.value = '']) : super.dirty();
   static final RegExp _phoneRegExp = RegExp(r'^[0-9]{6,15}$');
   @override
   PhoneNumberValidationError? validator(String value) {

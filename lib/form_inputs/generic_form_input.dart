@@ -8,7 +8,7 @@ enum GenericValidationError {
   invalidLength,
 }
 
-class GenericInput extends FormzInput<String, GenericValidationError> {
+class GenericFormInput extends FormzInput<String, GenericValidationError> {
   final String value;
   final String? Function(String)? customValidator;
   final int? minLength;
@@ -20,7 +20,7 @@ class GenericInput extends FormzInput<String, GenericValidationError> {
   final String? invalidLengthMessage;
   final Map<GenericValidationError, String>? errorMessages;
 
-  const GenericInput.pure({
+  const GenericFormInput.pure({
     this.value = '',
     this.customValidator,
     this.minLength,
@@ -33,7 +33,7 @@ class GenericInput extends FormzInput<String, GenericValidationError> {
     this.errorMessages,
   }) : super.pure('');
 
-  const GenericInput.dirty({
+  const GenericFormInput.dirty({
     required this.value,
     this.customValidator,
     this.minLength,

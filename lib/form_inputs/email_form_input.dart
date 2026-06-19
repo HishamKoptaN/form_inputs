@@ -2,9 +2,9 @@ import 'package:formz/formz.dart';
 
 enum EmailValidationError { empty, invalid, domainNotAllowed }
 
-class EmailInput extends FormzInput<String, EmailValidationError> {
-  const EmailInput.pure({this.allowedDomains}) : super.pure('');
-  const EmailInput.dirty([super.value = '', this.allowedDomains])
+class EmailFormInput extends FormzInput<String, EmailValidationError> {
+  const EmailFormInput.pure({this.allowedDomains}) : super.pure('');
+  const EmailFormInput.dirty([super.value = '', this.allowedDomains])
       : super.dirty();
   final List<String>? allowedDomains;
   String? get errorMessage {

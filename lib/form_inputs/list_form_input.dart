@@ -6,16 +6,16 @@ enum ListValidationError {
   tooMany,
 }
 
-class ListFormzInput<T> extends FormzInput<List<T>, ListValidationError> {
+class ListFormInput<T> extends FormzInput<List<T>, ListValidationError> {
   final int? minLength;
   final int? maxLength;
 
-  const ListFormzInput.pure({
+  const ListFormInput.pure({
     this.minLength,
     this.maxLength,
   }) : super.pure(const []);
 
-  const ListFormzInput.dirty(
+  const ListFormInput.dirty(
     super.value, {
     this.minLength,
     this.maxLength,

@@ -54,7 +54,7 @@ class InputsBloc extends Bloc<InputsEvent, InputsState> {
 
   FormzSubmissionStatus _validateForm({required InputsEntity inputs}) {
     final formzValid = Formz.validate([
-      inputs.link ?? const LinkInput.pure(),
+      inputs.link ?? const LinkFormInput.pure(),
       // GenericFormzInput.dirty(value: inputs.name?.value ?? ''),
       // inputs.email ?? const EmailInput.pure(),
       // inputs.password ?? const PasswordInput.pure(),

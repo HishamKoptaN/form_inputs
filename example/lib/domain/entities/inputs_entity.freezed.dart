@@ -14,18 +14,18 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$InputsEntity {
-  LinkInput? get link;
-  GenericInput? get name;
-  GenericInput? get description;
-  EmailInput? get email;
-  UsernameInput? get username;
-  PasswordInput? get password;
-  ConfirmPasswordInput? get confirmPassword;
-  PhoneNumberInput? get phoneNumber;
-  GenericInput? get dialCode;
-  GenericInput? get isoCode;
-  BoolFormzInput? get isValidNumber;
-  BoolFormzInput? get termsAccepted;
+  LinkFormInput? get link;
+  GenericFormInput? get name;
+  GenericFormInput? get description;
+  EmailFormInput? get email;
+  UsernameFormInput? get username;
+  PasswordFormInput? get password;
+  ConfirmPasswordFormInput? get confirmPassword;
+  PhoneNumberFormInput? get phoneNumber;
+  GenericFormInput? get dialCode;
+  GenericFormInput? get isoCode;
+  BoolFormInput? get isValidNumber;
+  BoolFormInput? get termsAccepted;
   bool? get obscurePassword;
   bool? get rememberMe;
 
@@ -99,18 +99,18 @@ abstract mixin class $InputsEntityCopyWith<$Res> {
       _$InputsEntityCopyWithImpl;
   @useResult
   $Res call(
-      {LinkInput? link,
-      GenericInput? name,
-      GenericInput? description,
-      EmailInput? email,
-      UsernameInput? username,
-      PasswordInput? password,
-      ConfirmPasswordInput? confirmPassword,
-      PhoneNumberInput? phoneNumber,
-      GenericInput? dialCode,
-      GenericInput? isoCode,
-      BoolFormzInput? isValidNumber,
-      BoolFormzInput? termsAccepted,
+      {LinkFormInput? link,
+      GenericFormInput? name,
+      GenericFormInput? description,
+      EmailFormInput? email,
+      UsernameFormInput? username,
+      PasswordFormInput? password,
+      ConfirmPasswordFormInput? confirmPassword,
+      PhoneNumberFormInput? phoneNumber,
+      GenericFormInput? dialCode,
+      GenericFormInput? isoCode,
+      BoolFormInput? isValidNumber,
+      BoolFormInput? termsAccepted,
       bool? obscurePassword,
       bool? rememberMe});
 }
@@ -146,51 +146,51 @@ class _$InputsEntityCopyWithImpl<$Res> implements $InputsEntityCopyWith<$Res> {
       link: freezed == link
           ? _self.link
           : link // ignore: cast_nullable_to_non_nullable
-              as LinkInput?,
+              as LinkFormInput?,
       name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       email: freezed == email
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailInput?,
+              as EmailFormInput?,
       username: freezed == username
           ? _self.username
           : username // ignore: cast_nullable_to_non_nullable
-              as UsernameInput?,
+              as UsernameFormInput?,
       password: freezed == password
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
-              as PasswordInput?,
+              as PasswordFormInput?,
       confirmPassword: freezed == confirmPassword
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as ConfirmPasswordInput?,
+              as ConfirmPasswordFormInput?,
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumberInput?,
+              as PhoneNumberFormInput?,
       dialCode: freezed == dialCode
           ? _self.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       isoCode: freezed == isoCode
           ? _self.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       isValidNumber: freezed == isValidNumber
           ? _self.isValidNumber
           : isValidNumber // ignore: cast_nullable_to_non_nullable
-              as BoolFormzInput?,
+              as BoolFormInput?,
       termsAccepted: freezed == termsAccepted
           ? _self.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
-              as BoolFormzInput?,
+              as BoolFormInput?,
       obscurePassword: freezed == obscurePassword
           ? _self.obscurePassword
           : obscurePassword // ignore: cast_nullable_to_non_nullable
@@ -297,18 +297,18 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            LinkInput? link,
-            GenericInput? name,
-            GenericInput? description,
-            EmailInput? email,
-            UsernameInput? username,
-            PasswordInput? password,
-            ConfirmPasswordInput? confirmPassword,
-            PhoneNumberInput? phoneNumber,
-            GenericInput? dialCode,
-            GenericInput? isoCode,
-            BoolFormzInput? isValidNumber,
-            BoolFormzInput? termsAccepted,
+            LinkFormInput? link,
+            GenericFormInput? name,
+            GenericFormInput? description,
+            EmailFormInput? email,
+            UsernameFormInput? username,
+            PasswordFormInput? password,
+            ConfirmPasswordFormInput? confirmPassword,
+            PhoneNumberFormInput? phoneNumber,
+            GenericFormInput? dialCode,
+            GenericFormInput? isoCode,
+            BoolFormInput? isValidNumber,
+            BoolFormInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)?
         $default, {
@@ -353,18 +353,18 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            LinkInput? link,
-            GenericInput? name,
-            GenericInput? description,
-            EmailInput? email,
-            UsernameInput? username,
-            PasswordInput? password,
-            ConfirmPasswordInput? confirmPassword,
-            PhoneNumberInput? phoneNumber,
-            GenericInput? dialCode,
-            GenericInput? isoCode,
-            BoolFormzInput? isValidNumber,
-            BoolFormzInput? termsAccepted,
+            LinkFormInput? link,
+            GenericFormInput? name,
+            GenericFormInput? description,
+            EmailFormInput? email,
+            UsernameFormInput? username,
+            PasswordFormInput? password,
+            ConfirmPasswordFormInput? confirmPassword,
+            PhoneNumberFormInput? phoneNumber,
+            GenericFormInput? dialCode,
+            GenericFormInput? isoCode,
+            BoolFormInput? isValidNumber,
+            BoolFormInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)
         $default,
@@ -407,18 +407,18 @@ extension InputsEntityPatterns on InputsEntity {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            LinkInput? link,
-            GenericInput? name,
-            GenericInput? description,
-            EmailInput? email,
-            UsernameInput? username,
-            PasswordInput? password,
-            ConfirmPasswordInput? confirmPassword,
-            PhoneNumberInput? phoneNumber,
-            GenericInput? dialCode,
-            GenericInput? isoCode,
-            BoolFormzInput? isValidNumber,
-            BoolFormzInput? termsAccepted,
+            LinkFormInput? link,
+            GenericFormInput? name,
+            GenericFormInput? description,
+            EmailFormInput? email,
+            UsernameFormInput? username,
+            PasswordFormInput? password,
+            ConfirmPasswordFormInput? confirmPassword,
+            PhoneNumberFormInput? phoneNumber,
+            GenericFormInput? dialCode,
+            GenericFormInput? isoCode,
+            BoolFormInput? isValidNumber,
+            BoolFormInput? termsAccepted,
             bool? obscurePassword,
             bool? rememberMe)?
         $default,
@@ -467,29 +467,29 @@ class _InputsEntity implements InputsEntity {
       this.rememberMe});
 
   @override
-  final LinkInput? link;
+  final LinkFormInput? link;
   @override
-  final GenericInput? name;
+  final GenericFormInput? name;
   @override
-  final GenericInput? description;
+  final GenericFormInput? description;
   @override
-  final EmailInput? email;
+  final EmailFormInput? email;
   @override
-  final UsernameInput? username;
+  final UsernameFormInput? username;
   @override
-  final PasswordInput? password;
+  final PasswordFormInput? password;
   @override
-  final ConfirmPasswordInput? confirmPassword;
+  final ConfirmPasswordFormInput? confirmPassword;
   @override
-  final PhoneNumberInput? phoneNumber;
+  final PhoneNumberFormInput? phoneNumber;
   @override
-  final GenericInput? dialCode;
+  final GenericFormInput? dialCode;
   @override
-  final GenericInput? isoCode;
+  final GenericFormInput? isoCode;
   @override
-  final BoolFormzInput? isValidNumber;
+  final BoolFormInput? isValidNumber;
   @override
-  final BoolFormzInput? termsAccepted;
+  final BoolFormInput? termsAccepted;
   @override
   final bool? obscurePassword;
   @override
@@ -567,18 +567,18 @@ abstract mixin class _$InputsEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {LinkInput? link,
-      GenericInput? name,
-      GenericInput? description,
-      EmailInput? email,
-      UsernameInput? username,
-      PasswordInput? password,
-      ConfirmPasswordInput? confirmPassword,
-      PhoneNumberInput? phoneNumber,
-      GenericInput? dialCode,
-      GenericInput? isoCode,
-      BoolFormzInput? isValidNumber,
-      BoolFormzInput? termsAccepted,
+      {LinkFormInput? link,
+      GenericFormInput? name,
+      GenericFormInput? description,
+      EmailFormInput? email,
+      UsernameFormInput? username,
+      PasswordFormInput? password,
+      ConfirmPasswordFormInput? confirmPassword,
+      PhoneNumberFormInput? phoneNumber,
+      GenericFormInput? dialCode,
+      GenericFormInput? isoCode,
+      BoolFormInput? isValidNumber,
+      BoolFormInput? termsAccepted,
       bool? obscurePassword,
       bool? rememberMe});
 }
@@ -615,51 +615,51 @@ class __$InputsEntityCopyWithImpl<$Res>
       link: freezed == link
           ? _self.link
           : link // ignore: cast_nullable_to_non_nullable
-              as LinkInput?,
+              as LinkFormInput?,
       name: freezed == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       email: freezed == email
           ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailInput?,
+              as EmailFormInput?,
       username: freezed == username
           ? _self.username
           : username // ignore: cast_nullable_to_non_nullable
-              as UsernameInput?,
+              as UsernameFormInput?,
       password: freezed == password
           ? _self.password
           : password // ignore: cast_nullable_to_non_nullable
-              as PasswordInput?,
+              as PasswordFormInput?,
       confirmPassword: freezed == confirmPassword
           ? _self.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
-              as ConfirmPasswordInput?,
+              as ConfirmPasswordFormInput?,
       phoneNumber: freezed == phoneNumber
           ? _self.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as PhoneNumberInput?,
+              as PhoneNumberFormInput?,
       dialCode: freezed == dialCode
           ? _self.dialCode
           : dialCode // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       isoCode: freezed == isoCode
           ? _self.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
-              as GenericInput?,
+              as GenericFormInput?,
       isValidNumber: freezed == isValidNumber
           ? _self.isValidNumber
           : isValidNumber // ignore: cast_nullable_to_non_nullable
-              as BoolFormzInput?,
+              as BoolFormInput?,
       termsAccepted: freezed == termsAccepted
           ? _self.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
-              as BoolFormzInput?,
+              as BoolFormInput?,
       obscurePassword: freezed == obscurePassword
           ? _self.obscurePassword
           : obscurePassword // ignore: cast_nullable_to_non_nullable

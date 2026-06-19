@@ -2,13 +2,13 @@ import 'package:formz/formz.dart';
 
 enum LinkValidationError { empty, invalid }
 
-class LinkInput extends FormzInput<String, LinkValidationError> {
-  const LinkInput.pure({
+class LinkFormInput extends FormzInput<String, LinkValidationError> {
+  const LinkFormInput.pure({
     String value = '',
     String? emptyMessage,
     String? invalidMessage,
   }) : super.pure(value);
-  const LinkInput.dirty({
+  const LinkFormInput.dirty({
     required String value,
     String? emptyMessage,
     String? invalidMessage,

@@ -2,10 +2,10 @@ import 'package:formz/formz.dart';
 
 enum GenericCheckboxValidationError { notChecked }
 
-class GenericCheckboxInput
+class GenericCheckboxFormInput
     extends FormzInput<bool, GenericCheckboxValidationError> {
-  const GenericCheckboxInput.pure() : super.pure(false);
-  const GenericCheckboxInput.dirty([bool value = false]) : super.dirty(value);
+  const GenericCheckboxFormInput.pure() : super.pure(false);
+  const GenericCheckboxFormInput.dirty([bool value = false]) : super.dirty(value);
 
   @override
   GenericCheckboxValidationError? validator(bool value) {

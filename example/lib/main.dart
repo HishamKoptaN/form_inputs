@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_inputs/form_inputs.dart';
-import 'package:form_inputs/form_inputs/username_Input.dart';
 import 'package:form_inputs_example/core/di/dependency_injection.dart';
 import 'package:formz/formz.dart';
 import 'bloc/inputs_bloc.dart';
@@ -63,7 +62,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              link: LinkInput.dirty(value: v),
+                              link: LinkFormInput.dirty(value: v),
                             ),
                           ),
                         );
@@ -84,7 +83,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              name: GenericInput.dirty(
+                              name: GenericFormInput.dirty(
                                 value: v,
                                 minLength: 3,
                                 maxLength: 15,
@@ -117,7 +116,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              email: EmailInput.dirty(v, const ['gmail.com']),
+                              email:
+                                  EmailFormInput.dirty(v, const ['gmail.com']),
                             ),
                           ),
                         );
@@ -138,7 +138,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              username: UsernameInput.dirty(
+                              username: UsernameFormInput.dirty(
                                 v,
                               ),
                             ),
@@ -162,7 +162,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              password: PasswordInput.dirty(v, true),
+                              password: PasswordFormInput.dirty(v, true),
                             ),
                           ),
                         );
@@ -180,7 +180,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              confirmPassword: ConfirmPasswordInput.dirty(
+                              confirmPassword: ConfirmPasswordFormInput.dirty(
                                 value: v,
                                 password: state.inputs.password?.value ?? '',
                               ),
@@ -203,7 +203,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         getIt<InputsBloc>().add(
                           InputsEvent.dataChanged(
                             inputs: state.inputs.copyWith(
-                              phoneNumber: PhoneNumberInput.dirty(value),
+                              phoneNumber: PhoneNumberFormInput.dirty(value),
                             ),
                           ),
                         );
@@ -229,7 +229,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             getIt<InputsBloc>().add(
                               InputsEvent.dataChanged(
                                 inputs: state.inputs.copyWith(
-                                  termsAccepted: BoolFormzInput.dirty(value!),
+                                  termsAccepted: BoolFormInput.dirty(value!),
                                 ),
                               ),
                             );

@@ -9,10 +9,12 @@ enum PasswordValidationError {
   noSymbol
 }
 
-class PasswordInput extends FormzInput<String, PasswordValidationError> {
+class PasswordFormInput extends FormzInput<String, PasswordValidationError> {
   final bool strictValidation;
-  const PasswordInput.pure({this.strictValidation = false}) : super.pure('');
-  const PasswordInput.dirty([super.value = '', this.strictValidation = false])
+  const PasswordFormInput.pure({this.strictValidation = false})
+      : super.pure('');
+  const PasswordFormInput.dirty(
+      [super.value = '', this.strictValidation = false])
       : super.dirty();
   @override
   PasswordValidationError? validator(String value) {

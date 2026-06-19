@@ -5,15 +5,15 @@ enum ConfirmPasswordValidationError {
   mismatched,
 }
 
-class ConfirmPasswordInput
+class ConfirmPasswordFormInput
     extends FormzInput<String, ConfirmPasswordValidationError> {
   final String password;
   final Map<ConfirmPasswordValidationError, String>? errorMessages;
-  const ConfirmPasswordInput.pure({
+  const ConfirmPasswordFormInput.pure({
     this.password = '',
     this.errorMessages,
   }) : super.pure('');
-  const ConfirmPasswordInput.dirty({
+  const ConfirmPasswordFormInput.dirty({
     String value = '',
     this.password = '',
     this.errorMessages,

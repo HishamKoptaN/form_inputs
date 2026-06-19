@@ -3,11 +3,11 @@ import 'package:formz/formz.dart';
 
 enum FileValidationError { empty, invalid, custom }
 
-class FileFormzInput extends FormzInput<File?, FileValidationError> {
+class FileFormInput extends FormzInput<File?, FileValidationError> {
   final String? Function(File?)? customValidator;
 
-  const FileFormzInput.pure({this.customValidator}) : super.pure(null);
-  const FileFormzInput.dirty(super.value, {this.customValidator})
+  const FileFormInput.pure({this.customValidator}) : super.pure(null);
+  const FileFormInput.dirty(super.value, {this.customValidator})
       : super.dirty();
 
   @override

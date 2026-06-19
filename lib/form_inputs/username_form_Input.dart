@@ -2,11 +2,11 @@ import 'package:formz/formz.dart';
 
 enum UsernameValidationError { empty, short, long, invalidFormat }
 
-class UsernameInput extends FormzInput<String, UsernameValidationError> {
+class UsernameFormInput extends FormzInput<String, UsernameValidationError> {
   final int min;
   final int max;
-  const UsernameInput.pure({this.min = 8, this.max = 25}) : super.pure('');
-  const UsernameInput.dirty([super.value = '', this.min = 8, this.max = 25])
+  const UsernameFormInput.pure({this.min = 8, this.max = 25}) : super.pure('');
+  const UsernameFormInput.dirty([super.value = '', this.min = 8, this.max = 25])
       : super.dirty();
   static final RegExp _usernameRegex = RegExp(r'^[a-zA-Z0-9_]+$');
   String? get errorMessage {

@@ -5,9 +5,9 @@ enum BoolValidationError {
   mustBeTrue,
 }
 
-class BoolFormzInput extends FormzInput<bool, BoolValidationError> {
-  const BoolFormzInput.pure() : super.pure(false);
-  const BoolFormzInput.dirty([super.value = false]) : super.dirty();
+class BoolFormInput extends FormzInput<bool, BoolValidationError> {
+  const BoolFormInput.pure() : super.pure(false);
+  const BoolFormInput.dirty([super.value = false]) : super.dirty();
 
   @override
   BoolValidationError? validator(bool value) {
